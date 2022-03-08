@@ -1,14 +1,22 @@
-const { Mongoose, userSchema } = require('../config');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const { sequelize } = require('../config');
 
-class User {
-    find = async (id) => {
-        const userModel = Mongoose.model('users', userSchema);
+class User extends Model {}
 
-        const response = await userModel.find(id).lean().exec();
-
-        return response;
+User.init({
+    firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    lastName: {
+        type: DataTypes.STRING
     }
-}
+}, {
+    sequelize,
+    modelName: "User"
+});
+
+User.sync();
 
 module.exports = {
     User

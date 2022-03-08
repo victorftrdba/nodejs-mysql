@@ -1,12 +1,11 @@
 
 const { User } = require('../Model/User');
-const userModel = new User;
 
 class UsuarioController {
-    login = (req, res) => {
-        const { id } = req.body;
+    criarUsuario = async (req, res) => {
+        const { firstName, lastName } = req.body;
 
-        const response = userModel.find({ _id: id });
+        const response = await User.create({ firstName: firstName, lastName: lastName });
 
         return res.send(response);
     }

@@ -14,6 +14,6 @@ app.get('/', (req, res) => {
     res.send({"message": "API funcionando!"});
 })
 
-app.post('/login', usuarioController.login);
+app.post('/save-user', usuarioController.criarUsuario);
 
 app.listen(PORT);
