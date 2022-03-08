@@ -10,10 +10,11 @@ app.use(bodyParser.json());
 const { UsuarioController } = require('./Controllers/UsuarioController');
 const usuarioController = new UsuarioController;
 
-app.get('/', (req, res) => {
-    res.send({"message": "API funcionando!"});
-})
-
+/* USERS ROUTES */
+app.get('/', usuarioController.mostrarUsuarios);
+app.get('/show-user/:id', usuarioController.mostrarUsuario);
 app.post('/save-user', usuarioController.criarUsuario);
+app.patch('/update-user/:id', usuarioController.atualizarUsuario);
+app.delete('/delete-user/:id', usuarioController.deletaUsuario);
 
 app.listen(PORT);
