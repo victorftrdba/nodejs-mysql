@@ -15,7 +15,7 @@ class UsuarioController {
             where: {
                 id
             }
-        })
+        });
 
         return res.send(response);
     }
@@ -23,7 +23,7 @@ class UsuarioController {
     criarUsuario = async (req, res) => {
         const { firstName, lastName } = req.body;
 
-        const response = await User.create({ firstName: firstName, lastName: lastName });
+        const response = await User.create({ firstName, lastName });
 
         return res.send(response);
     }
@@ -38,7 +38,7 @@ class UsuarioController {
             }
         });
 
-        return res.send(response);
+        return res.send({"success": true});
     }
 
     deletaUsuario = async (req, res) => {
